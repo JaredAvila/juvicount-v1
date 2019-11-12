@@ -1,0 +1,66 @@
+.Register {
+    color: rgb(121, 134, 0);
+    width: 500px;
+    margin: auto;
+}
+
+.Register h1 {
+    font-family: 'Bowlby One SC', cursive;
+    letter-spacing: .5rem;
+    font-size: 4rem;
+}
+
+.Register h4 {
+    font-size: 2rem;
+}
+
+.Register form {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+
+.Register input {
+    border: 1px solid rgb(53, 53, 53);
+    outline: none;
+    border-radius: 25px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+}
+
+.Register input.Btn {
+    background-color: rgb(198, 137, 255);
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.Register input.Btn:hover {
+    background-color: rgb(213, 175, 252);
+}
+
+.Accnt {
+    padding-top: 10px;
+    color: rgb(156, 156, 156);
+}
+
+.Link {
+    color: rgb(121, 134, 0);
+    text-decoration: none;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: -.02rem;
+}
+
+.Link:hover {
+    color: rgb(154, 189, 0);
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+@media only screen and (max-width: 500px) {
+    .Register {
+        width: 80%;
+    }
+}

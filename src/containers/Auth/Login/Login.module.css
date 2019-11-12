@@ -1,0 +1,60 @@
+.Login {
+    color: rgb(121, 134, 0);
+    width: 500px;
+    margin: auto;
+}
+
+.Login h4 {
+    font-size: 2rem;
+}
+
+.Login form {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+
+.Login input {
+    border: 1px solid rgb(53, 53, 53);
+    outline: none;
+    border-radius: 25px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+}
+
+.Login input.Btn {
+    background-color: rgb(198, 137, 255);
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.Login input.Btn:hover {
+    background-color: rgb(213, 175, 252);
+}
+
+.Accnt {
+    padding-top: 10px;
+    color: rgb(156, 156, 156);
+}
+
+.Link {
+    color: rgb(121, 134, 0);
+    text-decoration: none;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: -.02rem;
+}
+
+.Link:hover {
+    color: rgb(154, 189, 0);
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+@media only screen and (max-width: 500px) {
+    .Login {
+        width: 80%;
+    }
+}

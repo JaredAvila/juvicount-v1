@@ -1,0 +1,40 @@
+.Toolbar {
+    height: 56px;
+    background-color: rgba(31, 31, 31, 0.932);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 90;
+}
+
+.Toolbar h1 {
+    font-family: 'Bowlby One SC', cursive;
+    letter-spacing: .5rem;
+    font-size: 2rem;
+    color: rgb(179, 117, 238);
+}
+
+.Toolbar nav {
+    height: 100%;
+}
+
+.Logo {
+    height: 80%;
+}
+
+@media (max-width: 499px) {
+    .DesktopOnly {
+        display: none;
+    }
+    .Toolbar h1 {
+        font-family: 'Bowlby One SC', cursive;
+        letter-spacing: .3rem;
+        font-size: 1.8rem;
+    }
+}
