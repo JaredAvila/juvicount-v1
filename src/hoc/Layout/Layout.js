@@ -5,7 +5,8 @@ import * as styles from "./Layout.module.css";
 
 class Layout extends Component {
   state = {
-    showSideDrawer: false
+    showSideDrawer: false,
+    isAuth: false
   };
 
   drawerClosedHandler = () => {

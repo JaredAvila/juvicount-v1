@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import axios from "axios";
+
 import Input from "../../../UI/Input/Input";
 import { NavLink } from "react-router-dom";
 import { checkValidation } from "../../../helpers/validation";
@@ -83,10 +85,20 @@ class Register extends Component {
       this.setState({ noMatch: true });
       return;
     }
-    console.log(
-      `Username: ${this.state.controls["email"].value} \n Password: ${this.state.controls["password"].value}`
-    );
-    //Submit to be authenticated
+
+    const data = {
+      email: this.state.controls["email"].value,
+      password: this.state.controls["password"].value,
+      returnSecureToken: true
+    };
+    axios
+      .post("http://localhost:8000/api/v1/juvicount/register", data)
+      .then(res => {
+        localStorage.setItem("idToken", res.data.idToken);
+        localStorage.setItem("email", res.data.email);
+        localStorage.setItem("userId", res.data.id);
+      })
+      .catch(err => console.log(err));
     this.props.history.push("/wallet");
   };
 
