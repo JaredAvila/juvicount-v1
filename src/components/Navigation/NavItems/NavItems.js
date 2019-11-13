@@ -1,40 +1,25 @@
-import React, { Component } from "react";
+import React from "react";
 import NavItem from "./NavItem/NavItem";
 
 import * as styles from "./NavItems.module.css";
 
-class NavItems extends Component {
-  state = {
-    isAuth: false
-  };
+const NavItems = props => {
+  let routes = (
+    <ul className={styles.NavItems} onClick={props.clicked}>
+      <NavItem link="/">Login</NavItem>
+      <NavItem link="/register">Register</NavItem>
+    </ul>
+  );
 
-  componentDidMount() {
-    if (localStorage.getItem("userId")) {
-      this.setState({ isAuth: true });
-    } else {
-      this.setState({ isAuth: false });
-    }
-  }
-
-  render() {
-    let routes = (
-      <ul className={styles.NavItems} onClick={this.props.clicked}>
-        <NavItem link="/">Login</NavItem>
-        <NavItem link="/register">Register</NavItem>
+  if (props.isAuth) {
+    routes = (
+      <ul className={styles.NavItems} onClick={props.clicked}>
+        <NavItem link="/wallet">Wallet</NavItem>
+        <NavItem link="/logout">Logout</NavItem>
       </ul>
     );
-
-    if (this.state.isAuth) {
-      routes = (
-        <ul className={styles.NavItems} onClick={this.props.clicked}>
-          <NavItem link="/wallet">Wallet</NavItem>
-          <NavItem link="/logout">Logout</NavItem>
-        </ul>
-      );
-    }
-
-    return routes;
   }
-}
+  return routes;
+};
 
 export default NavItems;

@@ -67,7 +67,6 @@ class Login extends Component {
       this.state.controls["password"].value,
       false
     );
-    this.props.history.push("/wallet");
   };
 
   render() {

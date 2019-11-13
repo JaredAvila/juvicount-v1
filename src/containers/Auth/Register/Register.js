@@ -3,10 +3,12 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import Input from "../../../UI/Input/Input";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { checkValidation } from "../../../helpers/validation";
+import { connect } from "react-redux";
 
 import * as styles from "./Register.module.css";
+import * as actions from "../../../store/actions/";
 
 class Register extends Component {
   state = {
@@ -86,20 +88,11 @@ class Register extends Component {
       return;
     }
 
-    const data = {
-      email: this.state.controls["email"].value,
-      password: this.state.controls["password"].value,
-      returnSecureToken: true
-    };
-    axios
-      .post("http://localhost:8000/api/v1/juvicount/register", data)
-      .then(res => {
-        localStorage.setItem("idToken", res.data.idToken);
-        localStorage.setItem("email", res.data.email);
-        localStorage.setItem("userId", res.data.id);
-      })
-      .catch(err => console.log(err));
-    this.props.history.push("/wallet");
+    this.props.onAuth(
+      this.state.controls["email"].value,
+      this.state.controls["password"].value,
+      true
+    );
   };
 
   render() {
@@ -124,8 +117,15 @@ class Register extends Component {
         />
       );
     });
+
+    let authRedirect = null;
+
+    if (this.props.isAuthenticated) {
+      authRedirect = <Redirect to="/wallet" />;
+    }
     return (
       <div className={styles.Register}>
+        {authRedirect}
         <div>
           <h4>Create an account</h4>
           <form onSubmit={this.onSubmitHandler}>
@@ -143,4 +143,19 @@ class Register extends Component {
   }
 }
 
-export default Register;
+const mapStateToProps = state => {
+  return {
+    loading: state.auth.loading,
+    error: state.auth.error,
+    isAuthenticated: state.auth.token !== null
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAuth: (email, password, isSignUp) =>
+      dispatch(actions.auth(email, password, isSignUp))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
